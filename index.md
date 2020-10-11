@@ -1,42 +1,3 @@
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/grkngs/CS491-A-tab/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/grkngs/CS491-A-tab/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
-
-
 # Bilkent University
 
 # Senior Design Project
@@ -77,7 +38,7 @@ The project’s first concern is to give reliable results in an efficient way, w
 
 ### 1.2 Constraints
 ### 1.2.1 Economic
-	A-Tab would be a great opportunity for food places especially. It will prevent the economic loss of miscalculations on the payment phase and also it will try to minimize the queues at crowded times such as breakfast,lunch and dinner. Moreover the setup of the A-Tab is very simple, only need is a basic computer and camera with the internet connection.
+A-Tab would be a great opportunity for food places especially. It will prevent the economic loss of miscalculations on the payment phase and also it will try to minimize the queues at crowded times such as breakfast,lunch and dinner. Moreover the setup of the A-Tab is very simple, only need is a basic computer and camera with the internet connection.
 ### 	1.2.3 Implementation Constraints
 -Our project will be in a desktop application(where the image data is analyzed) and a mobile application(where the user takes the photo and sends to the system). 
 -We will be using gitHub and intelliJ to work concurrently.
@@ -92,19 +53,19 @@ This will not be a major concern since we are not planning to develop an electro
 The main concern about this project will be sustainability. Since, if it is not sustainable it will not be a proper solution. Since, the program only uses the photo which the user took(meal). It will be sustainable.
 	
 ### 1.3 Ethical Issues
-	Since the image will be obtained from the user of A-Tab(User will take the photo), this may arise a problem in terms of getting the users data. However, users will be acknowledged that only the data of the photo will be used. To eliminate the problem of ethics we will follow and apply the IEEE Ethical Codes in our project. We will not gather any data if the users don’t give permission to do so. Other than that if any open source code is used it will be handled properly.
+Since the image will be obtained from the user of A-Tab(User will take the photo), this may arise a problem in terms of getting the users data. However, users will be acknowledged that only the data of the photo will be used. To eliminate the problem of ethics we will follow and apply the IEEE Ethical Codes in our project. We will not gather any data if the users don’t give permission to do so. Other than that if any open source code is used it will be handled properly.
 ## 2.Requirements
 ### 2.1 Functional Requirements
 
 ### 2.2 Non-Functional Requirements
 ### 2.2.1	Extensibility
-	This will be in our focus since our project can be developed and used in a significant number of places. Our view of handling it will help the project to be developed in the later stages(after the project is done). There will always be a better solution,interface. So we are trying to provide a project which is extensible.
+This will be in our focus since our project can be developed and used in a significant number of places. Our view of handling it will help the project to be developed in the later stages(after the project is done). There will always be a better solution,interface. So we are trying to provide a project which is extensible.
 ### 2.2.2 Reliability
-	The photos will be sent through a mobile app to the desktop application. The results will be based on the photo taken.
+The photos will be sent through a mobile app to the desktop application. The results will be based on the photo taken.
 ### 2.2.3 Efficiency
 Our aim is to give the results of the photo to user in less than 20 seconds.
 ### 2.2.4 Scalability
-	Service we are providing in any restaurant will not be affected by the number of customers or any other restaurant which are using the same application.
-	Our system will handle multiple images from different users simultaneously.
+Service we are providing in any restaurant will not be affected by the number of customers or any other restaurant which are using the same application.
+Our system will handle multiple images from different users simultaneously.
 
 ## 3.References
