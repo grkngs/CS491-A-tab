@@ -21,18 +21,30 @@ With A-Tab, our aim is to reduce the time for asking the cost of the meal. A-Tab
 In this report, first we will describe our A-Tab project. After that, constraints of the project will be examined under the appropriate sections. Then, we will discuss professional and ethical issues that may arise. After those, requirements of the project will be given under appropriate sections grouped under functional and non-functional requirements. 
 ### 1.1 Description
 Our project aims to deal with the time inefficiency problem that is faced in mostly cafeterias and restaurants. Our proposed solution helps the customers to see the costs of the meals they ordered by taking a photo of the meals. 
+
 The application that the project will create will take the images as inputs. It will analyse the image of the meals. We designed a few subsections  that will accomplish that purpose. Each subsection is classified by different algorithms.
+
 The first algorithm is designated for segmentation of the image:
+
 Non-meal and meal objects will be seperated. Non-meal objects are going to be disregarded.
 If they are different, meal objects will be seperated and changed into something that is easier to analyze. Then they will be sent to the second algorithm.
+
 The second algorithm will analyse the meals:
+
 Object classification will be done by the second algorithm.
+
 The third algorithm will make object matching:
+
 The meal that is classified will be checked through a large database of classes. A matched class will give the cost as return. 
+
 After the third algorithm, the cost of the meals that are given to the application will be returned.
+
 We expect to face three main problems that we described above, segmentation, object classification and object matching. We are planning to use Machine Learning algorithms, some of them will be taken from open sources, some of which we will create ourselves. ML uses statistical reasoning to find approximate solutions for tackling the above difficulties. [https://www.zib.de/sites/default/files/Day1.pdf]
+
 Through designing the analysis and high-level design report, we can discover and use new ways of solving the problems above. For example, for increased accuracy, Image classification can be done using CNN(Convolutional neural network)[https://becominghuman.ai/image-processing-with-deep-learning-a-quick-start-guide-38e166340200]
+
 In the same way, we can find and choose different ways to accomplish the main task of the project, like Data Labeling and RCNN.
+
 The project’s first concern is to give reliable results in an efficient way, we expect the application to give the desired results in less than 20 seconds. We are not concerned about making a usable program with a good interface, as our first concern is to make it extensible and reliable. We are primarily planning to make the application to work in Personal Computers, and extend it to work on android and ios operating systems. 
 
 
