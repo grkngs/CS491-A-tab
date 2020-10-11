@@ -4,7 +4,9 @@
 # A-Tab: Artificial Tabldot
 # Specifications Report
 Gürkan Gür, Arda Kaan Gültekin,Mahir Efe Macit,Subhan Ibrahimli
+
 Supervisor: Halit Altay Güvenir
+
 Jury Members: Dr. Çiğdem Gündüz Demir, Dr. Can Alkan
 
 Specifications Report
