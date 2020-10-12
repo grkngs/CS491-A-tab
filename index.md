@@ -70,7 +70,10 @@ The main concern about this project will be sustainability. Since, if it is not 
 Since the image will be obtained from the user of A-Tab(User will take the photo), this may arise a problem in terms of getting the users data. However, users will be acknowledged that only the data of the photo will be used. To eliminate the problem of ethics we will follow and apply the IEEE Ethical Codes in our project. We will not gather any data if the users don’t give permission to do so. Other than that if any open source code is used it will be handled properly.
 ## 2.Requirements
 ### 2.1 Functional Requirements
-
+### 2.1.1 Setup Requirements
+Setup should be appropriate for efficient use of A-Tab. Camera should be located on the top angle and has clear vision of the tray and also has clear vision of plates. There should be a proper location for putting the tray for A-Tab scan, therefore the program should work efficiently. Camera distance also should be adjusted according to the size of the tray.
+### 2.1.2 Server/DataBase Requirements
+Program should be connected to Server continuously to calculate the similarity of the scanned plates and after that decide the kind of the food. If Similarity ratio is high however, the program cannot link the scanned object to the objects in the DataBase, it should take the object to the DataBase.
 ### 2.2 Non-Functional Requirements
 ### 2.2.1	Extensibility
 This will be in our focus since our project can be developed and used in a significant number of places. Our view of handling it will help the project to be developed in the later stages(after the project is done). There will always be a better solution,interface. So we are trying to provide a project which is extensible.
@@ -83,3 +86,5 @@ Service we are providing in any restaurant will not be affected by the number of
 Our system will handle multiple images from different users simultaneously.
 
 ## 3.References
+[1] “Machine Learning in Image Analysis - Theory and Practice.” Machine Learning in Image Analysis - Theory and Practice | Zuse Institute Berlin (ZIB), www.zib.de/MLIA. 
+[2] Infrrd. “Image Processing With Deep Learning- A Quick Start Guide.” Medium, Becoming Human: Artificial Intelligence Magazine, 25 Aug. 2019, becominghuman.ai/image-processing-with-deep-learning-a-quick-start-guide-38e166340200. 
