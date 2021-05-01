@@ -1,0 +1,243 @@
+Bilkent University
+Senior Design Project
+A-Tab: Artificial Tabldot
+High Level Design Report
+Gürkan Gür, Arda Kaan Gültekin, Mahir Efe Macit, Subhan Ibrahimli
+Supervisor: Halil Altay Güvenir
+Jury Members: Dr. Çiğdem Gündüz Demir, Dr. Can Alkan
+
+High Level Design Report
+December 27 2020
+
+
+
+
+
+
+
+
+This report is submitted to the Department of Computer Engineering of Bilkent University in partial fulfillment of the requirements of the Senior Design Project course CS491/2
+Contents
+
+
+1. Introduction	3
+1.1 Purpose of the system	3
+1.2 Design goals	4
+1.3 Definitions, acronyms, and abbreviations	5
+1.4 Overview	6
+2. Proposed software architecture	6
+2.1 Overview	6
+2.2 Subsystem decomposition	7
+2.3 Hardware/software mapping	7
+2.4 Persistent data management	8
+2.5 Access control and security	9
+2.6 Global software control	9
+2.7 Boundary conditions	9
+2.7.1 Initialization	9
+2.7.2 Termination	9
+2.7.3 Failure	10
+3. Subsystem services	10
+3.1 POS Client(Cashier)	10
+3.2 Menu Client(Manager)	12
+3.3 Server	13
+4. Consideration of Various Factors in Engineering Design	14
+5. Teamwork Details	16
+5.1 Contributing and functioning effectively on the team	17
+5.2 Helping creating a collaborative and inclusive environment	17
+5.3 Taking lead role and sharing leadership on the team	17
+6. References	18
+
+
+1. Introduction
+In today's world, time inefficiency is a common issue everyone faces. This problem can occur at any time in daily life. Therefore, this is more important than previous times. Anyone can face this problem while driving, working or even when the on is trying to eat outside. Although time efficiency is a common problem, the solutions of these difficulties are neither trivial nor common. To solve the time inefficiency, the root of the problem should be examined. 
+In a specific case where people are stuck in restaurant queues and waiting in the queue for a long amount of time has become a  problem for the people who are eating outside of home. The problem mainly occurs in the restaurants where the customers have to pick meals outside of a fixed menu. In addition to customers waiting in queues, cashiers are getting exhausted due to calculating the price of the meal and dealing with long queues. The cashier has to remember the price of the food bought and give the change for the bought food.Although there is also a time lost in the selection of meal process. We want to mainly focus on the time lost in the queues when the customer tries to purchase the meal. 
+With the A-Tab project, our aim is to reduce the time process of asking the cost of the meal. A-Tab aims to give the cost of the meal that is ordered by the customer without any interaction with the cashiers by taking the photo of the meal. The project is significant in terms of the innovative tools that will be used through accomplishing its aims and can be improved in the future to accomplish other various tasks, like other image analysing applications.
+1.1 Purpose of the system
+A-Tab is a restaurant application. It will be designed to identify the food and its price in a short time. The cashier will take a photo of the food and the system will display how much the food cost and it will be prompted to the customer. This system will be implemented by using TensorFlow library. The purpose of our design is not only to shorten the time spent in queues of restaurants but also to eliminate calculation errors of cashiers in calculating the food price and the change of given money.
+1.2 Design goals
+We will include the following identities for our design to create an efficient and usable system.
+
+Extensibility
+This will be our main focus since our project can be developed and used in a significant number of places. Our view of handling it will help the project to be developed in the later stages(after the project is done). There will always be a better or faster solution and the interface of a program can always be improved. So the project should be extensible.
+
+Efficiency
+A-Tab application should give the result of the taken image and process it in less than 20 seconds in order to be time efficient.
+Time spent in the restaurant line should be deduced in order to have a time efficient project.
+The communication between the database and the program should be minimal in terms of time to be a time efficient program.
+
+Scalability
+The A-Tab program is not just for a specific restaurant, so the database and  system should work concurrently with many restaurants and the app should not be affected by the number of restaurants using it.
+It should handle multiple images from different users simultaneously.
+
+Usability and Accessibility
+The system should be user friendly. Although processing an image is a hard process. The program should be user-friendly and easily used by users.
+It should be clear when the program should interact with the user whether a photo could be processed or not.
+The application should be free however, to run the application the program will need an additional camera to take the photos of the food.
+It should be downloaded for both customer and restaurant. Restaurant will download its Desktop version and the customer will download its mobile version.
+
+Error Handling
+-Errors and bugs should be noticed as soon as possible. Expected errors are identification problems and pricing problems. In case of identification errors unidentified objects should be added to the database. Pricing problems should be handled in the database also. Only way to overcome these errors is software changes, because we cannot show an  error message especially for unexpected conditions. However, for identification, the object frame will appear on the screen.
+
+Capacity
+-  In terms of capacity, the server should have appropriate storage for both images and prices. For an ordinary restaurant image storage should be approximately 50 and price is also the same.
+
+Maintainability
+- In terms of arrangements and changings in datasets for one restaurant, only the specified restaurant's dataset should be changed. Moreover also the changes in the backup side of the project should not affect the whole algorithm to maintain the modularity of the project. 
+
+Reliability
+-The system should guarantee the privacy of the datasets of the restaurants and make the calculations correctly. In case of connection loss the system must give a warning message to the cashier to stop the process, because this situation can create conflicts and lead to calculation mistakes. Moreover there will be no access from interface to the server side to ensure the privacy of the datas.
+
+1.3 Definitions, acronyms, and abbreviations
+CNN: Which stands for Cellular Neural Network. We are using TensorFlow for our main library. We use Python Programming Language to access the attributes of our CNN. This dynamic model allows us to identify the target object in a very short term of time. In addition it requires a small example dataset, compared to other methods.
+PosClient: Our Client is basically the cashier person. This person actually controls the whole process of the scanning and counting. If a process interrupts, the cashier is the only one who can have access to the system and fixes the problem.
+MenuAdmin: MenuClient stands for menu arranger. This person is responsible for menu order and has access to the database via using the server. Menu arrangers can add new food to the database with enough images of the food with its price.
+	
+1.4 Overview
+A-Tab will be a desktop application for restaurants. The application will identify the food from its image by using TensorFlow library and give the price of the food according to the saved prices in the database system of the application. The database will be filled with the photographs of the foods which are in the menuı. The front end of the A-Tab application will be designed to take photos of the images of the food and price the food or it will help the restaurants to upload their food images to the database system.
+When the cashier wants to get the price of the food. He/she will select the scan food option of the program and he/she will take the photo of the food. Then in the backend the photo taken will be compared with the already existing photos of the food with using TensorFlow library it will match the food with the correct food from the database and it will return a value as the price of the food.
+2. Proposed software architecture
+2.1 Overview
+The software architecture that we will use will put the objects that we described in the analysis report in an order. So far we have thought about how we could design the system so that it would satisfy the needs of the A-tab, in a manner of creating an orderly fundamental structure 
+2.2 Subsystem decomposition
+Architecture of A-tab fits the design of 3-tier architecture. According to Techopedia, “3-tier architecture is a client-server architecture in which the functional process logic, data access, computer data storage and user interface are developed and maintained as independent modules on separate platforms.”[3] We have chose this approach so that it will be easy to manage the 3 parts of the system; front-end, logic and database. In order to achieve the design goals that we have described like extensibility, maintainability, reliability and scalability 3-tier architecture provides the best approach. We want to independently modify the logic component which is composed of managers and a/i parts of the app. We decomposed the logic component into two parts, a/i and managers. A/i is the part which includes the way we will use computer vision algorithms. We wanted to separate this part from other logic components as it is an important part and should be independent inorder to easily modify, test, and extend it. Managers include 3 parts, camera manager, sales manager and account manager. 
+2.3 Hardware/software mapping
+We will implement our server system via using Python programming language and django. Connection between client and server will be handled by RESTAPI and json message structure, DataBase connection will be created  by using Python MySQL Database Driver. For initial structures and demos we will use an example dataset. After that we can enhance it,therefore it can work on a local host. Moreover in the final version it will connect to our example internet site via HTTP-REST protocol. The backend process is handled by requests basically in active parts of clients. Both for adding objects and the process of scanning the tray and identifying the foods. These actions can be handled by different request types such as HTTPGET, HTTPSET and HTTPPATCH.
+
+       Figure 1: Connection map between Clients and DataBase
+2.4 Persistent data management
+Persistent data includes the restaurant information with menus, photos of the foods and prices of the foods. Only the menu manager has the right to change these datas for only his or her restaurant. When the menu manager adds or removes the food from the system, the database updates itself in a very short period of time. This process is also the same for adding or removing an account from the database. DataBase will be constructed by using SQL. However, at the beginning of the project it is not our priority to use the online database connection. By RESTFUL API transmission of information and images are protected and this process cannot be interrupted by users or other people.
+
+	
+2.5 Access control and security
+Both the cashier and menu arranger has to create an A-Tab account to access the system. Each user has to pick an username and password. After login, the menu manager has the option to arrange the restaurant menu. In order to access users also should register with the place information. Therefore conflicts can be blocked, and cross accesses between places and managers can be handled. These information are stored in a database. Other users are not allowed to change or view the information of other users.
+2.6 Global software control
+A-Tab works in real time to show its main objective. Client actions are happening in a short term of time. During the identification process total price value returns to the cashier who is the actual client and cashier terminates the process of scanning. However activities such as register,login and arranging menu are based on access requests.
+2.7 Boundary conditions
+2.7.1	Initialization
+A-Tab is a desktop based food scanning program. Therefore initially the client should have a computer with both internet and camera connection. After that client has to register then login to the A-Tab via using the username and password that was chosen in the register process. While in the login process username and password should match with the ones that are already on the database.
+2.7.2	Termination
+If clients of A-Tab will logout from the system, they can login to the system back by using their existing usernames and passwords whenever they want. There will be a button for logout option in the application. By logging out none of their data would be lost.
+2.7.3	Failure
+If A-Tab cannot identify the foods on the tray,it will miscalculate the price. In this kind of problem the cashier should handle the conflict. The cause of the problem can be an unstable internet connection, blurred vision of tray or unadded foods which means these foods are not added to the A-Tab database by the menu manager. If the reason for the failure is internet connection, identification will be normal when connection comes in adequate level, because working principle is based on simultaneous identification and server access.
+
+3. Subsystem services
+3.1 POS Client(Cashier)
+,
+                       Figure 2: POS Client(Cashier) Structure
+
+The POS client can be used from a desktop application. The presentation section of the subsystem contains the basic elements of the user interface to communicate with the controllers of the system. 
+Presentation
+UI Manager : UI Manager controls the most parts of the views of the A-Tab for POS Client.
+Sales View:  View option for sales.
+Menu View:  Menu Screen includes the menu of the restaurant.
+Login View : The login screen view class.In this view the authentication of the user will be done while logging to the system.
+Place View: This is the view of general information of the restaurant.
+Camera View: Camera view includes the options of camera such as adjusting the distances.
+Managers
+Camera Manager : All the actions related to the camera will be done here such as scanning the food and uploading to the database.
+Sales Manager:  Receives and makes the arrangements according to the requests of the sales.
+Account Manager: Controls the requests and responses of the login process and user information.
+AI
+CNN: Cellular neural network is the fundamental structure for A-Tab, in addition in this project it stands for TensorFlow.
+Connection
+Client Connection Controller: This is the connection controller between client managers component and server controllers .
+3.2 Menu Client(Manager)
+
+Figure 3: Menu Client Structure
+
+Presentation
+UI Manager: UI Manager controls the most parts of the views of the A-Tab for MenuAdmin
+Menu View: Menu Screen includes the menu of the restaurant.
+Camera View: Camera view includes the options of camera such as adjusting the distances.
+Place View: This is the view of general information of the restaurant.
+Managers
+Camera Manager: Receives and makes the arrangements according to the requests of the camera.
+Menu Manager: Shows the attributes of the menu, moreover receives and makes the arrangements according to the requests of the menu.
+Account Manager: Controls the requests and responses of the login process and user information.
+Connection
+Client Connection Controller: This is the connection controller between client managers component and server controllers .
+
+3.3 Server
+
+Figure 4: Server Structure
+Controllers
+Sales Controller: Controls the flow of sales and prices.
+Account Controller: Receives the account linked data.
+Menu Controller: This controls the menu linked changes and requests.
+Business Logic Layer
+Sales Logic: Changes the sales linked data according to the requests.
+Account Logic: Changes the account linked data according to the requests.
+Menu Logic: Changes the menu linked data according to the requests.
+Data Access Layer
+4. Consideration of Various Factors in Engineering Design
+As usual, developers are supposed to design software development plans in order to determine tasks to work on within the development. Our approach is that if the plan is considerable and applicable, then fundamentals of a good software development are successfully settled. That is the reason why we have been putting an effort to consider carefully and seriously not to face serious problems in the future.
+In the process of composing a software development plan, some essential factors are taken into consideration. Following the software engineering theory [1], we examine that main factors that should be considered throughout the development plan are the type and size of software, the experience of predecessors, the degree of complication of obtaining users’ needs, in which the user could be either customer or cashier, the development techniques and tools, the condition of development team, development risks.
+The first factor we put into the consideration is the type and size of software since it plays a significant role. As we are planning to make and use a specific database for the software development, different size and type of data, their particular architectures, their amount of data store, their pattern processing data, their operating environment, their serving object and etc. should be considered beforehand so that we can reasonably design software development plans.
+The second factor we put into the consideration is the experience of predecessors to enhance efficiency and quality of the software. After the assurance of the first factor, we should examine the similar softwares if there are any available, so that we can conclude the advantages and disadvantages of each software and bring a better and more convenient software development plan for our project. 
+The third factor we put into the consideration is the degree of complication of obtaining users’ needs, in order to satisfy users’ requirements and desires. Throughout the investigation we need to be confident about understanding some details in users’ needs, which could be different scenarios, such as determination of stability and clarity in users’ needs. In case of uncertainty, instability etc., developers need to put an effort and be confident that those points are fixed.
+The fourth factor we put into the consideration is the development techniques and tools, in which developers should clearly identify which techniques and tools can be convenient for execution in the development. Because this factor is included in essential phases, which are system analysis phase, system design phase and implementation phase. Therefore, developers should be careful in choosing development techniques and tools, and should make a proposal of using certain techniques and tools, and clarify the reason behind that.
+The fifth factor we put into the consideration is the development team, which has an inevitable role in the software development plan. Because if there is no passion to work on the development in each team member, there is a high possibility that the project will not progress as it is desired, no matter how good the software development is. Therefore, the strength, condition and thought of each developer in the team should be well-known to the team in the beginning phase of the development.
+The sixth factor we put into the consideration is the development risk, which frequently occurs within the development. There are some methods used during the software development for predicting future risks, their types, possible solutions and the outcomes from the solution. On the analysis phase, one of the main tasks is to determine problem definition, feasibility and needs analysis. In every stage of the development, there are multiple different types of risks that could appear. Developers need to know and predict possible solutions and be aware of the difficulty and probability of being able to solve the problem, and by making use of those data, they should be able to conclude possible outcomes and be ready for different scenarios.
+
+In the development process of A-Tab, we have also observed that application would have various effects on other different topics. The factors such as public health, safety, and welfare, as well as global, cultural, social, environmental, and economic factors have effects on software engineering design. We evaluated these factors and discussed how they would affect the design. Detailed information was discussed in the analysis report as well.
+
+
+
+Effect Level
+Effect
+Public Health
+8
+It will reduce the contact between people since it will reduce the time spent in queue
+Public Safety
+7
+Private information of the users will not be distributed to any third party company
+Public Welfare
+2
+Appropriate pricing
+Global Factors
+2
+Applicable in any country
+Cultural Factors
+4
+Culture Based sets are used
+Environmental Factors
+0
+None
+Economic Factors
+5
+Increasing the number of sales by reducing the queue length and time
+Social Factors
+4
+Can be used by anyone in terms of age,country
+
+				
+ 			 Figure 5. Evaluation of factors in engineering design
+
+5. Teamwork Details
+In software projects, human and social factors play indispensable roles. The management of knowledge and creativity are essential for software development, and creative work connects collaboration and interaction. That is why teamwork is considered one of the significant skills for the development process. In a project development, we are trying to contribute and fully understand every part of the project and share the information with other developers in the meeting and update the information that way in their mind.
+
+5.1 Contributing and functioning effectively on the team 
+The ability of each developer to contribute within a team may successfully manage the execution of software development. Throughout the development of our project, we have arranged online meetings, analysed the improvement, discussed the problems and details of the project, separated different parts and distributed them to each developer to work on. 
+
+5.2 Helping creating a collaborative and inclusive environment
+In order to make a collaborative and inclusive environment, we have been trying to create a friendly environment for a smoother and looser structure, motivate the individuals that are engaged in the development and create a healthy surrounding, encourage multi-disciplinary work, actively involve all project members in collaboration and etc. We have also tried to identify each developer’s strengths and determine what contributions that developer could make. This way, one member could compensate for the disabilities of others, and the appropriate tasks are given to each developer according to their strengths.
+5.3 Taking lead role and sharing leadership on the team
+In general, the type of software engineering team that is made in our environment could usually consist of four to six people. Each member in the team is responsible for a particular set of capabilities. In our team, the leader role does not imply being expert on something, but instead it is a role change. Team leader is responsible for controlling the team’s execution and the quality developers produce, and overall growth of the individuals on it. We do not have a consistent team leader in our development environment 
+
+since the team size consists of a small number of people, and we can easily follow each developer’s improvement on the project, the progress they make, and their overall growth throughout the development.
+
+
+
+
+
+
+
+
+6. References
+[1] Roger S Pressman. Software Engineering: A Practitioner’s Approach. Sixth Edition, McGraw-Hill, New York, 2005, pp52-126.
+
+[3] What is Three-Tier Architecture? - Definition from Techopedia. (n.d.). Retrieved December 27, 2020, from
+https://www.techopedia.com/definition/24649/three-tier-architecture
+
+
+
