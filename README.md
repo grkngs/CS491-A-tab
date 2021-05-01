@@ -1,4 +1,4 @@
-## A-Tab
+<img src="poster.png" alt="hi" class="inline"/>
 
 <a class="github-button" href="https://github.com/grkngs/CS491-A-tab/blob/gh-pages/Spesifications.md" aria-label="Specifications Raport">Specifications Report</a>
 
