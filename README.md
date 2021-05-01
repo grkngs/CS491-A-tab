@@ -13,4 +13,4 @@
 # Developers
 
 Gürkan Gür
-<img src="150.png" alt="hi" class="inline"/>
+<img src="gg.png" alt="hi" class="inline"/>
