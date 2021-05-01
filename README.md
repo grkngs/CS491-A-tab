@@ -18,5 +18,8 @@ Gürkan Gür
 
 Mahir Efe Macit
 
-
 <img src="efe3.png" alt="hi" class="inline"/>
+
+Arda Kaan Gültekin
+
+<img src="arda.png" alt="hi" class="inline"/>
