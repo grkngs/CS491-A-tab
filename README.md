@@ -1,5 +1,5 @@
 <!-- Place this tag where you want the button to render. -->
-<a class="github-button" href="https://github.com/ntkme" aria-label="Follow @ntkme on GitHub">Follow @ntkme</a>
+<a class="github-button" href="https://github.com/grkngs/CS491-A-tab/blob/gh-pages/Spesifications.md" aria-label="Specifications Raport">Specifications Raport</a>
 
 
 # Bilkent University
