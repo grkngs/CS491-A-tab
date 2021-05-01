@@ -1,3 +1,7 @@
+<!-- Place this tag where you want the button to render. -->
+<a class="github-button" href="https://github.com/ntkme" aria-label="Follow @ntkme on GitHub">Follow @ntkme</a>
+
+
 # Bilkent University
 
 # Senior Design Project
