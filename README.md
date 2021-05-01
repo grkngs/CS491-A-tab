@@ -23,3 +23,7 @@ Mahir Efe Macit
 Arda Kaan Gültekin
 
 <img src="arda.png" alt="hi" class="inline"/>
+
+Subhan Ibrahimli
+
+<img src="subhan.jpg" alt="hi" class="inline"/>
