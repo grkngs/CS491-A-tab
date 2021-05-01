@@ -19,4 +19,4 @@ Gürkan Gür
 Mahir Efe Macit
 
 
-<img src="efe2.png" alt="hi" class="inline"/>
+<img src="efe3.png" alt="hi" class="inline"/>
